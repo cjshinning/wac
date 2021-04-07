@@ -1,5 +1,5 @@
 <template>
-    <div class="container">1</div>
+    <div class="container">2</div>
 </template>
 <script>
 import './assets/css/main.scss';
