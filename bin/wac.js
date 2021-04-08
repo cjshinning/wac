@@ -1,22 +1,45 @@
 #!/usr/bin/env node
 const { program } = require('commander');
 const settings = require('../config/settings');
+const { log } = require('../lib/util');
+
+// 检查官网初始化目录是否正确
+function checkName(appName, cb){
+    if(/^\w+$/.test(appName)){
+        cb(appName);
+    }else{
+        log('请输入正确的官网名称！', 'red');
+    }
+}
+
+// 检查官网开发目录是否正确
+function checkId(appId, cb){
+    if(/^\w+\/[^\/]+$/.test(appId)){
+        cb(appId);
+    }else{
+        log('请输入正确的官网开发目录！', 'red');
+    }
+}
 
 program.version('0.0.1');
 
 program
-  .command('init <appId>')
+  .command('init <appName>')
   .description('项目初始化')
-  .action((appId) => {
-    require('../lib/init')(appId);
+  .action((appName) => {
+    checkName(appName, () => {
+        require('../lib/init')(appName);
+    })
   });
 
 program
   .command('dev <appId>')
   .description('开启本地开发模式')
   .action((appId) => {
-    settings.appid = appId;
-    require('../lib/server');
+    checkId(appId, () => {
+        settings.appid = appId;
+        require('../lib/server');
+    })
   });
 
 program.parse(process.argv);
