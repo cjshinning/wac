@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const { program } = require('commander');
+const ora = require('ora');
 const settings = require('../config/settings');
 const { log } = require('../lib/util');
 
@@ -41,5 +42,17 @@ program
         require('../lib/server');
     })
   });
+
+program
+    .command('prod <appId>')
+    .description('开启本地开发模式')
+    .action((appId) => {
+        checkId(appId, () => {
+            const spinner = ora('正准备上传资源到测试环境').start();
+            settings.appid = appId;
+            require('../lib/build');
+            spinner.succeed('开始上传资源');
+        })
+    });
 
 program.parse(process.argv);
