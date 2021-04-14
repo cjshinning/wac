@@ -3,10 +3,12 @@ const settings = require('../config/settings');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+// const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: path.resolve(settings.basePath,'src',settings.appid,'src/main.js')
+        main: path.resolve(settings.basePath,'src',settings.appid,'src/main.js'),
+        vendor: ['vue', 'vue-router'],
     },
     resolve: {
         extensions: ['.js', '.jsx', '.vue']
@@ -19,18 +21,6 @@ module.exports = {
                 use: [{
                     loader:  'babel-loader'
                 }]
-            },
-            {
-                test: /\.(jpg|png|gif)$/i,
-                use: {
-                    loader: 'url-loader',
-                    options: {
-                        // placeholder 占位符
-                        name: '[name]_[hash].[ext]',
-                        outputPath: 'images',
-                        limit: 10240
-                    }
-                }
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/i,
@@ -48,23 +38,28 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(settings.basePath,'src',settings.appid,'index.html')
+            template: path.resolve(settings.basePath,'src',settings.appid,'index.html'),
+            publicPath: 'www.baidu.com'
         }), 
+        // new AddAssetHtmlPlugin({ 
+        //     filepath: path.resolve(settings.basePath,'src',settings.appid,'extras/js/flexible.js'),
+        //     publicPath: `//img1.37wanimg.com/${settings.appid}/extras/js`
+        // }),
         new CleanWebpackPlugin(),
         new VueLoaderPlugin()
     ],
     performance: false,
-    optimization: {
-        usedExports: true,
-        splitChunks: {
-            chunks: 'all',
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10,
-                    name: 'vendors'
-                }
-            }
-        }
-    }
+    // optimization: {
+    //     usedExports: true,
+    //     splitChunks: {
+    //         chunks: 'all',
+    //         cacheGroups: {
+    //             vendors: {
+    //                 test: /[\\/]node_modules[\\/]/,
+    //                 priority: -10,
+    //                 name: 'vendors'
+    //             }
+    //         }
+    //     }
+    // }
 };

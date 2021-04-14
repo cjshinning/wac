@@ -27,9 +27,10 @@ program.version('0.0.1');
 program
   .command('init <appName>')
   .description('项目初始化')
-  .action((appName) => {
-    checkName(appName, () => {
-        require('../lib/init')(appName);
+  .action((appId) => {
+    checkId(appId, () => {
+        settings.appId = appId;
+        require('../lib/init')();
     })
   });
 

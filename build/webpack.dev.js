@@ -28,6 +28,13 @@ const devConfig = {
                         importLoaders: 2
                       }
                     },
+                    {
+                        loader: 'px2rem-loader',
+                        options: {
+                          remUni: 75,
+                          remPrecision: 8
+                        }
+                    },
                     'postcss-loader',
                     'sass-loader'
                 ]
@@ -38,7 +45,18 @@ const devConfig = {
                     'style-loader',
                     'css-loader'
                 ]
-            }
+            },
+            {
+                test: /\.(jpg|png|gif)$/i,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'images',
+                        limit: 10240
+                    }
+                }
+            },
         ]
     },
 }
