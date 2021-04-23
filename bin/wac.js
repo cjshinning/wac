@@ -30,29 +30,39 @@ program
   .action((appId) => {
     checkId(appId, () => {
         settings.appId = appId;
-        require('../lib/init')();
+        require('../command/init')();
     })
   });
 
 program
   .command('dev <appId>')
-  .description('开启本地开发模式')
+  .description('进入本地开发模式')
   .action((appId) => {
     checkId(appId, () => {
         settings.appid = appId;
-        require('../lib/server');
+        require('../command/server');
     })
   });
 
 program
     .command('prod <appId>')
-    .description('开启本地开发模式')
+    .description('进入测试环境开发模式')
     .action((appId) => {
         checkId(appId, () => {
             const spinner = ora('正准备上传资源到测试环境').start();
             settings.appid = appId;
-            require('../lib/build');
+            require('../command/build');
             spinner.succeed('开始上传资源');
+        })
+    });
+
+program
+    .command('deploy <appId>')
+    .description('进入svn上传模式')
+    .action((appId) => {
+        checkId(appId, () => {
+            settings.appid = appId;
+            require('../command/deploy');
         })
     });
 

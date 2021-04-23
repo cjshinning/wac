@@ -7,8 +7,8 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     entry: {
-        main: path.resolve(settings.basePath,'src',settings.appid,'src/main.js'),
-        vendor: ['vue', 'vue-router'],
+        app: path.resolve(settings.basePath,'src',settings.appid,'src/main.js'),
+        vendor: ['vue', 'vue-router', 'vuex'],
     },
     resolve: {
         extensions: ['.js', '.jsx', '.vue']

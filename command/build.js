@@ -17,9 +17,7 @@ compiler.watch({
     }
     
     const info = stats.toJson();
-    
     if (stats.hasErrors()) {
         console.error(info.errors);
     }
-    
 })
