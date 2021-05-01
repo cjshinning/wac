@@ -38,8 +38,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(settings.basePath,'src',settings.appid,'index.html'),
-            publicPath: 'www.baidu.com'
+            template: path.resolve(settings.basePath,'src',settings.appid,'index.html')
         }), 
         // new AddAssetHtmlPlugin({ 
         //     filepath: path.resolve(settings.basePath,'src',settings.appid,'extras/js/flexible.js'),

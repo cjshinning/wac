@@ -1,15 +1,29 @@
 <template>
     <div class="index">
-        这是首页
+        <virtual-list :listData="data" :itemSize="100"></virtual-list>
     </div>
 </template>
 <script>
 import {jsonp} from 'axios-jsonp-pro';
 import apiUrl from '../../assets/js/apiUrl.js';
+import VirtualList from '../../components/VirtualList';
+
+let d = [];
+for(let i = 0; i < 1000; i++){
+    d.push({
+        id: i,
+        value: i
+    })
+}
+
 export default {
     data(){
         return{
+            data: d
         }
+    },
+    components: {
+        VirtualList
     },
     methods: {
         getContent(keys){
@@ -29,5 +43,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.index{
+    width: 100%;
+    height: 100%;
+}
 </style>
 

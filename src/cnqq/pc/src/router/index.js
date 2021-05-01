@@ -7,6 +7,8 @@ import Article from '../views/article/Article.vue';
 Vue.use(Router);
 
 export default new Router({
+    base: '/cnqq/',
+    mode: 'history',
     routes: [
         {
             path: '/',
@@ -19,7 +21,7 @@ export default new Router({
           component: List
         },
         {
-            path: '/:cate/:id',
+            path: '/article/:id',
             name: 'article',
             component: Article
         },

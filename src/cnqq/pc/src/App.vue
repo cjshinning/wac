@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <router-view></router-view>
-        <div>{{count}}</div>
+        <!-- <div>{{count}}</div> -->
     </div>
 </template>
 <script>

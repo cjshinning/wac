@@ -9,12 +9,14 @@ const devConfig = {
     output: {
         filename: '[name].js',
         chunkFilename: '[name].js',
-        path: path.resolve(settings.basePath,'dist',settings.appid)
+        path: path.resolve(settings.basePath,'dist',settings.appid),
+        publicPath: '/'
     },
     devServer: {
         contentBase: path.resolve(settings.basePath,'src',settings.appid),
         open: true,
-        hot: true
+        hot: true,
+        historyApiFallback: true
     },
     module: {
         rules: [
