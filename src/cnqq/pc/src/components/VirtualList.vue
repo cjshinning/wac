@@ -1,22 +1,11 @@
 <template>
-    <div class="infinite-list-container" ref="list">
+    <div class="infinite-list-container" ref="list" @scroll="scrollEvent($event)">
         <div class="infinite-list-phanto" :style="{height: listHeight + 'px'}"></div>
-        <div class="infinite-list">
-            <div class="infinite-list-item" :style="{height: itemSize + 'px', lineHeight: itemSize + 'px'}">1</div>
-            <div class="infinite-list-item">2</div>
-            <div class="infinite-list-item">3</div>
-            <div class="infinite-list-item">4</div>
-            <div class="infinite-list-item">5</div>
-            <div class="infinite-list-item">6</div>
-            <div class="infinite-list-item">7</div>
-            <div class="infinite-list-item">8</div>
-            <div class="infinite-list-item">9</div>
-            <div class="infinite-list-item">10</div>
-            <div class="infinite-list-item">11</div>
-            <div class="infinite-list-item">12</div>
-            <div class="infinite-list-item">13</div>
-            <div class="infinite-list-item">14</div>
-            <div class="infinite-list-item">15</div>
+        <div class="infinite-list" :style="{ transform: getTransform }">
+            <div class="infinite-list-item"
+                v-for="item in visibleData" 
+                :key="item.id"
+                :style="{height: itemSize + 'px', lineHeight: itemSize + 'px'}">{{item.id}}</div>
         </div>
     </div>
 </template>
@@ -37,11 +26,19 @@ export default {
     computed: {
         // 列表总高度
         listHeight(){
-            return this.listData.length + this.itemSize;
+            return this.listData.length * this.itemSize;
         },
         // 可显示的列表项数
         visibleCount(){
             return Math.ceil(this.screenHeight/this.itemSize);
+        },
+        // 偏移量对应的style
+        getTransform(){
+            return `translate3d(0,${this.startOffset}px,0)`;
+        },
+        // 获取真实显示列表数据
+        visibleData(){
+            return this.listData.slice(this.start, Math.min(this.end,this.listData.length));
         }
     },
     data(){
@@ -52,13 +49,18 @@ export default {
         }
     },
     mounted(){
-        // console.log(this.listHeight);
-        // console.log(this.$refs.list.clientHeight);
         // 开始索引
-        let scrollTop = this.$refs.list.scrollTop;
+        this.screenHeight = this.$el.clientHeight;
         this.start = 0
         this.end = this.start + this.visibleCount;
-        console.log(this.visibleCount);
+    },
+    methods: {
+        scrollEvent(){
+            let scrollTop = this.$refs.list.scrollTop;
+            this.start = Math.floor(scrollTop/this.itemSize);
+            this.end = this.start + this.visibleCount;
+            this.startOffset = scrollTop - (scrollTop % this.itemSize);
+        }
     }
 }
 </script>
