@@ -19,7 +19,11 @@ module.exports = {
                 test: /\.jsx?$/, 
                 include: path.resolve(settings.basePath,'src'),
                 use: [{
-                    loader:  'babel-loader'
+                    loader:  'babel-loader',
+                    options: {
+                        presets: [['@babel/preset-env']],
+                        cacheDirectory:true 
+                    }
                 }]
             },
             {

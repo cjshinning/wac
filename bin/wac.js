@@ -25,7 +25,7 @@ function checkId(appId, cb){
 program.version('0.0.1');
 
 program
-  .command('init <appName>')
+  .command('init <appId>')
   .description('项目初始化')
   .action((appId) => {
     checkId(appId, () => {
