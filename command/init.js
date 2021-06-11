@@ -44,15 +44,7 @@ async function chooseComponents(platform, baseDist){
 
 async function init(){
     const baseDist = path.resolve(settings.basePath, 'src', settings.appId);
-    let platform = '';
-    if(settings.appId.split('/')[1] === 'pc'){
-        platform = 'pc';
-    }else if(settings.appId.split('/')[1] === 'wap'){
-        platform = 'wap';
-    }else {
-        log('请输入正确的初始化目录', 'red');
-        return;
-    }
+    
     if(fs.existsSync(baseDist)){
         const answers = await inquirer
             .prompt([
@@ -68,9 +60,9 @@ async function init(){
             log('项目初始化失败', 'red');
             return;
         }
-        chooseComponents(platform, baseDist);
+        chooseComponents(settings.platform, baseDist);
     }else{
-        chooseComponents(platform, baseDist);
+        chooseComponents(settings.platform, baseDist);
     }
 }
 

@@ -3,6 +3,7 @@ const { program } = require('commander');
 const ora = require('ora');
 const settings = require('../config/settings');
 const { log } = require('../lib/util');
+const path = require('path');
 
 // 检查官网初始化目录是否正确
 function checkName(appName, cb){
@@ -22,6 +23,19 @@ function checkId(appId, cb){
     }
 }
 
+// 检查官网平台（pc或者wap）
+function checkPlatform(appId, cb){
+    if(appId.split('/')[1] === 'pc'){
+        settings.platform = 'pc';
+    }else if(appId.split('/')[1] === 'wap'){
+        settings.platform = 'wap';
+    }else {
+        log('请输入正确的开发目录', 'red');
+        return;
+    }
+    cb();
+}
+
 program.version('0.0.1');
 
 program
@@ -30,7 +44,9 @@ program
   .action((appId) => {
     checkId(appId, () => {
         settings.appId = appId;
-        require('../command/init')();
+        checkPlatform(settings.appId, () => {
+            require('../command/init')();
+        })
     })
   });
 
@@ -38,9 +54,12 @@ program
   .command('dev <appId>')
   .description('进入本地开发模式')
   .action((appId) => {
+    process.env.NODE_ENV = 'development';
     checkId(appId, () => {
-        settings.appid = appId;
-        require('../command/server');
+        settings.appId = appId;
+        checkPlatform(settings.appId, () => {
+            require('../command/server');
+        })
     })
   });
 
@@ -48,11 +67,14 @@ program
     .command('prod <appId>')
     .description('进入测试环境开发模式')
     .action((appId) => {
+        process.env.NODE_ENV = 'production';
         checkId(appId, () => {
             const spinner = ora('正准备上传资源到测试环境').start();
-            settings.appid = appId;
-            require('../command/build');
-            spinner.succeed('开始上传资源');
+            settings.appId = appId;
+            checkPlatform(settings.appId, () => {
+                require('../command/build');
+                spinner.succeed('开始上传资源');
+            })
         })
     });
 
@@ -60,9 +82,12 @@ program
     .command('deploy <appId>')
     .description('进入svn上传模式')
     .action((appId) => {
+        process.env.NODE_ENV = 'production';
         checkId(appId, () => {
-            settings.appid = appId;
-            require('../command/deploy');
+            settings.appId= appId;
+            checkPlatform(settings.appId, () => {
+                require('../command/deploy');
+            })
         })
     });
 

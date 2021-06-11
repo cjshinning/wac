@@ -1,0 +1,138 @@
+@import './asset.scss';
+@import './mixins.scss';
+@import './sprite.scss';
+
+.container{
+    width: 100%;
+    min-width: 1200px;
+    overflow-x: scroll;
+    .inner{
+        position: relative;
+        width: 1200px;
+        margin: 0 auto;
+    }
+}
+// 首页
+.banner{
+    width: 100%;
+    height: 904px;
+    background: url('../img/banner.jpg') no-repeat top center;
+}
+.section1{
+    width: 100%;
+    height: 1000px;
+    background: url('../img/bg1.jpg') no-repeat top center;
+    .title{
+        position: absolute;
+        left: 238px;
+        top: 35px;
+        width: 701px;
+        height: 172px;
+        @include sprite($title1);
+        text-indent: -9999px;
+    }
+    .main{
+        position: absolute;
+        left: -54px;
+        top: 236px;
+        width: 1306px;
+        height: 691px;
+        background: url('../img/book.png') no-repeat;
+    }
+    .kv-wrap{
+        position: absolute;
+        left: 78px;
+        top: 57px;
+        width: 506px;
+        height: 562px;
+        border: 3px solid #fff;
+        border-radius: 10px;
+    }
+    .paper-clip{
+        position: absolute;
+        left: -48px;
+        top: -2px;
+        width: 90px;
+        height: 70px;
+        @include sprite($paper-clip);
+        z-index: 2;
+    }
+    .civet-cat{
+        position: absolute;
+        left: -102px;
+        top: 376px;
+        width: 248px;
+        height: 239px;
+        @include sprite($civet-cat);
+        z-index: 2;
+    }
+}
+.section2{
+    width: 100%;
+    height: 1076px;
+    background: url('../img/bg2.jpg') no-repeat top center;
+    .title{
+        position: absolute;
+        left: 245px;
+        top: 0px;
+        width: 729px;
+        height: 172px;
+        @include sprite($title2);
+        text-indent: -9999px;
+    }
+}
+.section3{
+    width: 100%;
+    height: 1100px;
+    background: url('../img/bg3.jpg') no-repeat top center;
+    .title{
+        position: absolute;
+        left: 238px;
+        top: 64px;
+        width: 716px;
+        height: 172px;
+        @include sprite($title3);
+        text-indent: -9999px;
+    }
+}
+.section4{
+    width: 100%;
+    height: 990px;
+    background: url('../img/bg4.jpg') no-repeat top center;
+    .title{
+        position: absolute;
+        left: 238px;
+        top: 75px;
+        width: 729px;
+        height: 172px;
+        @include sprite($title4);
+        text-indent: -9999px;
+    }
+}
+.section5{
+    width: 100%;
+    height: 457px;
+    background: url('../img/bg5.jpg') no-repeat top center;
+}
+.btn-reserve{
+    position: fixed;
+    left: 12px;
+    top: 50%;
+    margin-top: -177px;
+    width: 231px;
+    height: 354px;
+    // background: url('../img/btn-reserve.png') no-repeat;
+    @include sprite($btn-reserve);
+    &:hover{
+        // background: url('../img/btn-reserve-h.png') no-repeat;
+        @include sprite($btn-reserve-h);
+    }
+}
+
+// 文章页
+.c-wrap{
+    width: 1200px;
+    margin: 52px auto 0;
+    padding-bottom: 16px;
+    overflow: hidden;
+}

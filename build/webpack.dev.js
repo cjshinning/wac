@@ -9,38 +9,17 @@ const devConfig = {
     output: {
         filename: '[name].js',
         chunkFilename: '[name].js',
-        path: path.resolve(settings.basePath,'dist',settings.appid),
+        path: path.resolve(settings.basePath,'dist',settings.appId),
         publicPath: '/'
     },
     devServer: {
-        contentBase: path.resolve(settings.basePath,'src',settings.appid),
+        contentBase: path.resolve(settings.basePath,'src',settings.appId),
         open: true,
         hot: true,
         historyApiFallback: true
     },
     module: {
         rules: [
-            {
-                test: /\.scss$/i,
-                use: [
-                    'style-loader',
-                    {
-                      loader: 'css-loader',
-                      options: {
-                        importLoaders: 2
-                      }
-                    },
-                    {
-                        loader: 'px2rem-loader',
-                        options: {
-                          remUni: 75,
-                          remPrecision: 8
-                        }
-                    },
-                    'postcss-loader',
-                    'sass-loader'
-                ]
-            },
             {
                 test: /\.css$/i,
                 use: [
@@ -62,5 +41,47 @@ const devConfig = {
         ]
     },
 }
+
+let scssRule = null;
+if(settings.platform === 'pc'){
+    scssRule = {
+        test: /\.scss$/i,
+        use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2
+              }
+            },
+            'postcss-loader',
+            'sass-loader'
+        ]
+    };
+}else{
+    scssRule = {
+        test: /\.scss$/i,
+        use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2
+              }
+            },
+            {
+                loader: 'px2rem-loader',
+                options: {
+                  remUni: 75,
+                  remPrecision: 8
+                }
+            },
+            'postcss-loader',
+            'sass-loader'
+        ]
+    };
+}
+devConfig.module.rules.unshift(scssRule);
+
 
 module.exports = merge(commonConfig, devConfig);

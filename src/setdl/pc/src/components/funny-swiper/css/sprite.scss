@@ -1,0 +1,134 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$btn-next-name: 'btn-next';
+$btn-next-x: 0px;
+$btn-next-y: 475px;
+$btn-next-offset-x: 0px;
+$btn-next-offset-y: -475px;
+$btn-next-width: 44px;
+$btn-next-height: 44px;
+$btn-next-total-width: 559px;
+$btn-next-total-height: 519px;
+$btn-next-image: './img/sprite_funny_swiper.png';
+$btn-next: (0px, 475px, 0px, -475px, 44px, 44px, 559px, 519px, './img/sprite_funny_swiper.png', 'btn-next', );
+$btn-prev-name: 'btn-prev';
+$btn-prev-x: 54px;
+$btn-prev-y: 475px;
+$btn-prev-offset-x: -54px;
+$btn-prev-offset-y: -475px;
+$btn-prev-width: 44px;
+$btn-prev-height: 44px;
+$btn-prev-total-width: 559px;
+$btn-prev-total-height: 519px;
+$btn-prev-image: './img/sprite_funny_swiper.png';
+$btn-prev: (54px, 475px, -54px, -475px, 44px, 44px, 559px, 519px, './img/sprite_funny_swiper.png', 'btn-prev', );
+$funny-bullet-h-name: 'funny-bullet-h';
+$funny-bullet-h-x: 388px;
+$funny-bullet-h-y: 0px;
+$funny-bullet-h-offset-x: -388px;
+$funny-bullet-h-offset-y: 0px;
+$funny-bullet-h-width: 171px;
+$funny-bullet-h-height: 221px;
+$funny-bullet-h-total-width: 559px;
+$funny-bullet-h-total-height: 519px;
+$funny-bullet-h-image: './img/sprite_funny_swiper.png';
+$funny-bullet-h: (388px, 0px, -388px, 0px, 171px, 221px, 559px, 519px, './img/sprite_funny_swiper.png', 'funny-bullet-h', );
+$funny-bullet-name: 'funny-bullet';
+$funny-bullet-x: 388px;
+$funny-bullet-y: 231px;
+$funny-bullet-offset-x: -388px;
+$funny-bullet-offset-y: -231px;
+$funny-bullet-width: 171px;
+$funny-bullet-height: 221px;
+$funny-bullet-total-width: 559px;
+$funny-bullet-total-height: 519px;
+$funny-bullet-image: './img/sprite_funny_swiper.png';
+$funny-bullet: (388px, 231px, -388px, -231px, 171px, 221px, 559px, 519px, './img/sprite_funny_swiper.png', 'funny-bullet', );
+$funny-pic-bg-name: 'funny-pic-bg';
+$funny-pic-bg-x: 0px;
+$funny-pic-bg-y: 0px;
+$funny-pic-bg-offset-x: 0px;
+$funny-pic-bg-offset-y: 0px;
+$funny-pic-bg-width: 378px;
+$funny-pic-bg-height: 465px;
+$funny-pic-bg-total-width: 559px;
+$funny-pic-bg-total-height: 519px;
+$funny-pic-bg-image: './img/sprite_funny_swiper.png';
+$funny-pic-bg: (0px, 0px, 0px, 0px, 378px, 465px, 559px, 519px, './img/sprite_funny_swiper.png', 'funny-pic-bg', );
+$spritesheet-width: 559px;
+$spritesheet-height: 519px;
+$spritesheet-image: './img/sprite_funny_swiper.png';
+$spritesheet-sprites: ($btn-next, $btn-prev, $funny-bullet-h, $funny-bullet, $funny-pic-bg, );
+$spritesheet: (559px, 519px, './img/sprite_funny_swiper.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

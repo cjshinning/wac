@@ -1,0 +1,200 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$icon-circle-h-name: 'icon-circle-h';
+$icon-circle-h-x: 463px;
+$icon-circle-h-y: 95px;
+$icon-circle-h-offset-x: -463px;
+$icon-circle-h-offset-y: -95px;
+$icon-circle-h-width: 22px;
+$icon-circle-h-height: 22px;
+$icon-circle-h-total-width: 563px;
+$icon-circle-h-total-height: 931px;
+$icon-circle-h-image: './img/sprite_role_tab.png';
+$icon-circle-h: (463px, 95px, -463px, -95px, 22px, 22px, 563px, 931px, './img/sprite_role_tab.png', 'icon-circle-h', );
+$icon-circle-name: 'icon-circle';
+$icon-circle-x: 495px;
+$icon-circle-y: 95px;
+$icon-circle-offset-x: -495px;
+$icon-circle-offset-y: -95px;
+$icon-circle-width: 11px;
+$icon-circle-height: 11px;
+$icon-circle-total-width: 563px;
+$icon-circle-total-height: 931px;
+$icon-circle-image: './img/sprite_role_tab.png';
+$icon-circle: (495px, 95px, -495px, -95px, 11px, 11px, 563px, 931px, './img/sprite_role_tab.png', 'icon-circle', );
+$role-tab-1-name: 'role-tab-1';
+$role-tab-1-x: 326px;
+$role-tab-1-y: 711px;
+$role-tab-1-offset-x: -326px;
+$role-tab-1-offset-y: -711px;
+$role-tab-1-width: 100px;
+$role-tab-1-height: 85px;
+$role-tab-1-total-width: 563px;
+$role-tab-1-total-height: 931px;
+$role-tab-1-image: './img/sprite_role_tab.png';
+$role-tab-1: (326px, 711px, -326px, -711px, 100px, 85px, 563px, 931px, './img/sprite_role_tab.png', 'role-tab-1', );
+$role-tab-2-name: 'role-tab-2';
+$role-tab-2-x: 326px;
+$role-tab-2-y: 806px;
+$role-tab-2-offset-x: -326px;
+$role-tab-2-offset-y: -806px;
+$role-tab-2-width: 100px;
+$role-tab-2-height: 85px;
+$role-tab-2-total-width: 563px;
+$role-tab-2-total-height: 931px;
+$role-tab-2-image: './img/sprite_role_tab.png';
+$role-tab-2: (326px, 806px, -326px, -806px, 100px, 85px, 563px, 931px, './img/sprite_role_tab.png', 'role-tab-2', );
+$role-tab-3-name: 'role-tab-3';
+$role-tab-3-x: 463px;
+$role-tab-3-y: 0px;
+$role-tab-3-offset-x: -463px;
+$role-tab-3-offset-y: 0px;
+$role-tab-3-width: 100px;
+$role-tab-3-height: 85px;
+$role-tab-3-total-width: 563px;
+$role-tab-3-total-height: 931px;
+$role-tab-3-image: './img/sprite_role_tab.png';
+$role-tab-3: (463px, 0px, -463px, 0px, 100px, 85px, 563px, 931px, './img/sprite_role_tab.png', 'role-tab-3', );
+$role-tab-4-name: 'role-tab-4';
+$role-tab-4-x: 326px;
+$role-tab-4-y: 616px;
+$role-tab-4-offset-x: -326px;
+$role-tab-4-offset-y: -616px;
+$role-tab-4-width: 100px;
+$role-tab-4-height: 85px;
+$role-tab-4-total-width: 563px;
+$role-tab-4-total-height: 931px;
+$role-tab-4-image: './img/sprite_role_tab.png';
+$role-tab-4: (326px, 616px, -326px, -616px, 100px, 85px, 563px, 931px, './img/sprite_role_tab.png', 'role-tab-4', );
+$role-tab-bg-name: 'role-tab-bg';
+$role-tab-bg-x: 0px;
+$role-tab-bg-y: 0px;
+$role-tab-bg-offset-x: 0px;
+$role-tab-bg-offset-y: 0px;
+$role-tab-bg-width: 316px;
+$role-tab-bg-height: 931px;
+$role-tab-bg-total-width: 563px;
+$role-tab-bg-total-height: 931px;
+$role-tab-bg-image: './img/sprite_role_tab.png';
+$role-tab-bg: (0px, 0px, 0px, 0px, 316px, 931px, 563px, 931px, './img/sprite_role_tab.png', 'role-tab-bg', );
+$role-tab-h1-name: 'role-tab-h1';
+$role-tab-h1-x: 326px;
+$role-tab-h1-y: 308px;
+$role-tab-h1-offset-x: -326px;
+$role-tab-h1-offset-y: -308px;
+$role-tab-h1-width: 127px;
+$role-tab-h1-height: 144px;
+$role-tab-h1-total-width: 563px;
+$role-tab-h1-total-height: 931px;
+$role-tab-h1-image: './img/sprite_role_tab.png';
+$role-tab-h1: (326px, 308px, -326px, -308px, 127px, 144px, 563px, 931px, './img/sprite_role_tab.png', 'role-tab-h1', );
+$role-tab-h2-name: 'role-tab-h2';
+$role-tab-h2-x: 326px;
+$role-tab-h2-y: 462px;
+$role-tab-h2-offset-x: -326px;
+$role-tab-h2-offset-y: -462px;
+$role-tab-h2-width: 127px;
+$role-tab-h2-height: 144px;
+$role-tab-h2-total-width: 563px;
+$role-tab-h2-total-height: 931px;
+$role-tab-h2-image: './img/sprite_role_tab.png';
+$role-tab-h2: (326px, 462px, -326px, -462px, 127px, 144px, 563px, 931px, './img/sprite_role_tab.png', 'role-tab-h2', );
+$role-tab-h3-name: 'role-tab-h3';
+$role-tab-h3-x: 326px;
+$role-tab-h3-y: 154px;
+$role-tab-h3-offset-x: -326px;
+$role-tab-h3-offset-y: -154px;
+$role-tab-h3-width: 127px;
+$role-tab-h3-height: 144px;
+$role-tab-h3-total-width: 563px;
+$role-tab-h3-total-height: 931px;
+$role-tab-h3-image: './img/sprite_role_tab.png';
+$role-tab-h3: (326px, 154px, -326px, -154px, 127px, 144px, 563px, 931px, './img/sprite_role_tab.png', 'role-tab-h3', );
+$role-tab-h4-name: 'role-tab-h4';
+$role-tab-h4-x: 326px;
+$role-tab-h4-y: 0px;
+$role-tab-h4-offset-x: -326px;
+$role-tab-h4-offset-y: 0px;
+$role-tab-h4-width: 127px;
+$role-tab-h4-height: 144px;
+$role-tab-h4-total-width: 563px;
+$role-tab-h4-total-height: 931px;
+$role-tab-h4-image: './img/sprite_role_tab.png';
+$role-tab-h4: (326px, 0px, -326px, 0px, 127px, 144px, 563px, 931px, './img/sprite_role_tab.png', 'role-tab-h4', );
+$spritesheet-width: 563px;
+$spritesheet-height: 931px;
+$spritesheet-image: './img/sprite_role_tab.png';
+$spritesheet-sprites: ($icon-circle-h, $icon-circle, $role-tab-1, $role-tab-2, $role-tab-3, $role-tab-4, $role-tab-bg, $role-tab-h1, $role-tab-h2, $role-tab-h3, $role-tab-h4, );
+$spritesheet: (563px, 931px, './img/sprite_role_tab.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

@@ -8,7 +8,7 @@ const settings = require('../config/settings');
 const commonConfig = require('./webpack.common.js');
 const htmlTohtmWebpackPlugin = require('../plugins/html2htm-webpack-plugin');
 
-const tplUploadDir = (settings.appid.indexOf('pc') !== -1) ? path.join('/www', settings.wwwTplsDomain, settings.appid.split('/pc')[0]) : path.join('/www', settings.wwwTplsDomain, settings.appid);
+const tplUploadDir = (settings.appId.indexOf('pc') !== -1) ? path.join('/www', settings.wwwTplsDomain, settings.appId.split('/pc')[0]) : path.join('/www', settings.wwwTplsDomain, settings.appId);
 
 const prodConfig = {
     mode: 'production',
@@ -16,32 +16,11 @@ const prodConfig = {
     output: {
         filename: 'js/[name].[contenthash:8].js',
         chunkFilename: 'js/[name].[contenthash:8].js',
-        path: path.resolve(settings.basePath, 'dist', settings.appid),
-        publicPath: `//img1.37wanimg.com/${settings.appid}/`,
+        path: path.resolve(settings.basePath, 'dist', settings.appId),
+        publicPath: `//img1.37wanimg.com/${settings.appId}/`,
     },
     module: {
         rules: [
-            {
-                test: /\.scss$/i,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                      loader: 'css-loader',
-                      options: {
-                        importLoaders: 2
-                      }
-                    },
-                    {
-                        loader: 'px2rem-loader',
-                        options: {
-                          remUni: 75,
-                          remPrecision: 8
-                        }
-                    },
-                    'postcss-loader',
-                    'sass-loader'
-                ]
-            },
             {
                 test: /\.css$/i,
                 use: [
@@ -68,16 +47,32 @@ const prodConfig = {
             chunkFilename: 'css/[name][contenthash:8].content.css'
         }),
         new CopyPlugin([
-            { from: path.join(settings.basePath,'src',settings.appid,'extras/'), to: path.join(settings.basePath,'dist',settings.appid,"extras/") }
+            { from: path.join(settings.basePath,'src',settings.appId,'extras/'), to: path.join(settings.basePath,'dist',settings.appId,"extras/") }
         ]),
         new htmlTohtmWebpackPlugin(),
         new WebpackUploadPlugin({//上传资源到测试环境
             receiver: settings.wwwUploadScript,
-            to: path.join('/www', settings.wwwDeployDomain, settings.appid),
+            to: path.join('/www', settings.wwwDeployDomain, settings.appId),
             test: (filepath) => {
                 //上传过滤
-                let watchPath = path.join(settings.basePath, 'dist', settings.appid, filepath);
+                let watchPath = path.join(settings.basePath, 'dist', settings.appId, filepath);
+                // let filterPath = ['.map', '.DS_Store', '.vscode', '.idea'];
+                // filterPath.forEach((item)=>{
+                //     let re = new RegExp(item+'$', 'g');
+                //     if(re.test(filepath)){
+                //         return false;
+                //     }
+                // })
                 if(/\.map$/g.test(filepath)){
+                    return false;
+                }
+                if(/\.DS_Store$/g.test(filepath)){
+                    return false;
+                }
+                if(/\.vscode$/g.test(filepath)){
+                    return false;
+                }
+                if(/\.idea$/g.test(filepath)){
                     return false;
                 }
                 if(/\.html$/g.test(filepath)){
@@ -108,5 +103,54 @@ const prodConfig = {
     optimization: {
     },
 }
+
+let scssRule = null;
+if(settings.platform === 'pc'){
+    scssRule = {
+        test: /\.scss$/i,
+        use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2
+              }
+            },
+            'postcss-loader',
+            'sass-loader',
+            {
+                loader: 'sass-resources-loader',
+                options: {
+                    resources: [
+                        path.resolve(settings.basePath,'src',settings.appId, 'src/assets/css/sprite.scss')
+                    ]
+                }
+            }
+        ]
+    };
+}else{
+    scssRule = {
+        test: /\.scss$/i,
+        use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2
+              }
+            },
+            {
+                loader: 'px2rem-loader',
+                options: {
+                  remUni: 75,
+                  remPrecision: 8
+                }
+            },
+            'postcss-loader',
+            'sass-loader'
+        ]
+    };
+}
+prodConfig.module.rules.unshift(scssRule);
 
 module.exports = merge(commonConfig, prodConfig);

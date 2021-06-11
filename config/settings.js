@@ -3,7 +3,8 @@ const basePath = process.cwd();
 module.exports = {
     basePath,
     appName: '',
-    appid: '',
+    appId: '',
+    platform: '',
     wwwSourceDir: 'src',
     wwwDeployDomain: 'img1.37wanimg.com',
     wwwTplsDomain: 'common.tpl.37.com',

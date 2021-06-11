@@ -13,32 +13,11 @@ const deployConfig = {
     output: {
         filename: 'js/[name].[contenthash:8].js',
         chunkFilename: 'js/[name].[contenthash:8].js',
-        path: path.resolve(settings.basePath, 'dist', settings.appid),
-        publicPath: `//img1.37wanimg.com/${settings.appid}/`,
+        path: path.resolve(settings.basePath, 'dist', settings.appId),
+        publicPath: `//img1.37wanimg.com/${settings.appId}/`,
     },
     module: {
         rules: [
-            {
-                test: /\.scss$/i,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                      loader: 'css-loader',
-                      options: {
-                        importLoaders: 2
-                      }
-                    },
-                    {
-                        loader: 'px2rem-loader',
-                        options: {
-                          remUni: 75,
-                          remPrecision: 8
-                        }
-                    },
-                    'postcss-loader',
-                    'sass-loader'
-                ]
-            },
             {
                 test: /\.css$/i,
                 use: [
@@ -65,12 +44,53 @@ const deployConfig = {
             chunkFilename: 'css/[name][contenthash:8].content.css'
         }),
         new CopyPlugin([
-            { from: path.join(settings.basePath,'src',settings.appid,'extras/'), to: path.join(settings.basePath,'dist',settings.appid,"extras/") }
+            { from: path.join(settings.basePath,'src',settings.appId,'extras/'), to: path.join(settings.basePath,'dist',settings.appId,"extras/") }
         ]),
         new htmlTohtmWebpackPlugin()
     ],
     optimization: {
     },
 }
+
+let scssRule = null;
+if(settings.platform === 'pc'){
+    scssRule = {
+        test: /\.scss$/i,
+        use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2
+              }
+            },
+            'postcss-loader',
+            'sass-loader'
+        ]
+    };
+}else{
+    scssRule = {
+        test: /\.scss$/i,
+        use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2
+              }
+            },
+            {
+                loader: 'px2rem-loader',
+                options: {
+                  remUni: 75,
+                  remPrecision: 8
+                }
+            },
+            'postcss-loader',
+            'sass-loader'
+        ]
+    };
+}
+deployConfig.module.rules.unshift(scssRule);
 
 module.exports = merge(commonConfig, deployConfig);

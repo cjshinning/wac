@@ -3,11 +3,62 @@ const settings = require('../config/settings');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const SpritesmithPlugin = require('webpack-spritesmith');
+const glob = require("glob");
 // const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+
+function createSpritesmithPlugin() {
+    const spritesmithPluginResult = [
+        // 默认的雪碧图
+        new SpritesmithPlugin({
+            src: {
+                cwd: path.resolve(settings.basePath,'src',settings.appId, 'src/assets/ico'),
+                glob: '*.png'
+            },
+            target: {
+                image: path.resolve(settings.basePath,'src',settings.appId, 'src/assets/img/sprite.png'),
+                css: path.resolve(settings.basePath,'src',settings.appId, 'src/assets/css/sprite.scss')
+            },
+            apiOptions: {
+                cssImageRef: process.env.NODE_ENV === 'development' ? '/src/assets/img/sprite.png' : '../img/sprite.png'
+            },
+            spritesmithOptions: {
+                padding: 10,
+                algorithm: "binary-tree"
+            }
+        })
+    ];
+    const componentDir = path.resolve(settings.basePath,'src',settings.appId, 'src/components');
+    const componentIconDirs = glob.sync(componentDir + '/**/ico');
+    componentIconDirs.forEach(componentIconDir => {
+        const componentName = componentIconDir.match(/components\/(.*)\//)[1].replace(/-/g, '_');
+        // 每个组件里面的雪碧图
+        spritesmithPluginResult.push(
+            new SpritesmithPlugin({
+                src: {
+                    cwd: componentIconDir,
+                    glob: '*.png'
+                },
+                target: {
+                    image: componentIconDir.match(/(\/.*\/)ico/)[1] + 'img/sprite_' + componentName + '.png',
+                    css: componentIconDir.match(/(\/.*\/)ico/)[1] + 'css/sprite.scss',
+                },
+                apiOptions: {
+                    cssImageRef: './img/sprite_' + componentName + '.png'
+                },
+                spritesmithOptions: {
+                    padding: 10,
+                    algorithm: "binary-tree"
+                }
+            })
+        )
+    })
+    return spritesmithPluginResult;
+}
 
 module.exports = {
     entry: {
-        app: path.resolve(settings.basePath,'src',settings.appid,'src/main.js'),
+        app: path.resolve(settings.basePath,'src',settings.appId,'src/main.js'),
         vendor: ['vue', 'vue-router', 'vuex'],
     },
     resolve: {
@@ -41,13 +92,10 @@ module.exports = {
         ]
     },
     plugins: [
+        ...createSpritesmithPlugin(),
         new HtmlWebpackPlugin({
-            template: path.resolve(settings.basePath,'src',settings.appid,'index.html')
+            template: path.resolve(settings.basePath,'src',settings.appId,'index.html')
         }), 
-        // new AddAssetHtmlPlugin({ 
-        //     filepath: path.resolve(settings.basePath,'src',settings.appid,'extras/js/flexible.js'),
-        //     publicPath: `//img1.37wanimg.com/${settings.appid}/extras/js`
-        // }),
         new CleanWebpackPlugin(),
         new VueLoaderPlugin()
     ],

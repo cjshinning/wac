@@ -10,8 +10,8 @@ const { log } = require('../lib/util');
 
 async function uploadAssets(src, dist, msg){
     return new Promise(async (resolve, reject) => {
-        const svnPath = path.resolve(dist, settings.appid);
-        const devPath = path.resolve(src, settings.appid);
+        const svnPath = path.resolve(dist, settings.appId);
+        const devPath = path.resolve(src, settings.appId);
         
         await fs.copy(devPath, svnPath)
         
@@ -39,8 +39,8 @@ async function uploadAssets(src, dist, msg){
 
 async function uploadTpl(src, dist, msg){
     return new Promise(async (resolve, reject) => {
-        const svnPath = path.resolve(dist, settings.appid);
-        const devPath = path.resolve(src, settings.appid);
+        const svnPath = path.resolve(dist, settings.appId);
+        const devPath = path.resolve(src, settings.appId);
         
         await fs.copy(devPath, svnPath)
         
@@ -71,8 +71,8 @@ async function uploadTpl(src, dist, msg){
 
 async function uploadSrc(src, dist, msg){
     return new Promise(async (resolve, reject) => {
-        const svnPath = path.resolve(dist, settings.appid);
-        const devPath = path.resolve(src, settings.appid);
+        const svnPath = path.resolve(dist, settings.appId);
+        const devPath = path.resolve(src, settings.appId);
         
         await fs.copy(devPath, svnPath)
         resolve();
@@ -81,7 +81,7 @@ async function uploadSrc(src, dist, msg){
 
 function getTitle(){
     return new Promise((resolve, reject) => {
-        const index = path.resolve(settings.basePath, 'src', settings.appid, 'index.html');
+        const index = path.resolve(settings.basePath, 'src', settings.appId, 'index.html');
         fs.readFile(index, 'utf8', (err, data) => {
             if (err) {
                 reject(err);
