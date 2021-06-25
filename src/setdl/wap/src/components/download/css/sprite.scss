@@ -1,0 +1,112 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$btn-android-name: 'btn-android';
+$btn-android-x: 0px;
+$btn-android-y: 0px;
+$btn-android-offset-x: 0px;
+$btn-android-offset-y: 0px;
+$btn-android-width: 298px;
+$btn-android-height: 80px;
+$btn-android-total-width: 329px;
+$btn-android-total-height: 170px;
+$btn-android-image: './img/sprite_download.png';
+$btn-android: (0px, 0px, 0px, 0px, 298px, 80px, 329px, 170px, './img/sprite_download.png', 'btn-android', );
+$btn-appstore-name: 'btn-appstore';
+$btn-appstore-x: 0px;
+$btn-appstore-y: 90px;
+$btn-appstore-offset-x: 0px;
+$btn-appstore-offset-y: -90px;
+$btn-appstore-width: 298px;
+$btn-appstore-height: 80px;
+$btn-appstore-total-width: 329px;
+$btn-appstore-total-height: 170px;
+$btn-appstore-image: './img/sprite_download.png';
+$btn-appstore: (0px, 90px, 0px, -90px, 298px, 80px, 329px, 170px, './img/sprite_download.png', 'btn-appstore', );
+$download-txt-name: 'download-txt';
+$download-txt-x: 308px;
+$download-txt-y: 0px;
+$download-txt-offset-x: -308px;
+$download-txt-offset-y: 0px;
+$download-txt-width: 21px;
+$download-txt-height: 155px;
+$download-txt-total-width: 329px;
+$download-txt-total-height: 170px;
+$download-txt-image: './img/sprite_download.png';
+$download-txt: (308px, 0px, -308px, 0px, 21px, 155px, 329px, 170px, './img/sprite_download.png', 'download-txt', );
+$spritesheet-width: 329px;
+$spritesheet-height: 170px;
+$spritesheet-image: './img/sprite_download.png';
+$spritesheet-sprites: ($btn-android, $btn-appstore, $download-txt, );
+$spritesheet: (329px, 170px, './img/sprite_download.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

@@ -58,8 +58,7 @@ function createSpritesmithPlugin() {
 
 module.exports = {
     entry: {
-        app: path.resolve(settings.basePath,'src',settings.appId,'src/main.js'),
-        vendor: ['vue', 'vue-router', 'vuex'],
+        app: path.resolve(settings.basePath,'src',settings.appId,'src/main.js')
     },
     resolve: {
         extensions: ['.js', '.jsx', '.vue']
@@ -100,17 +99,22 @@ module.exports = {
         new VueLoaderPlugin()
     ],
     performance: false,
-    // optimization: {
-    //     usedExports: true,
-    //     splitChunks: {
-    //         chunks: 'all',
-    //         cacheGroups: {
-    //             vendors: {
-    //                 test: /[\\/]node_modules[\\/]/,
-    //                 priority: -10,
-    //                 name: 'vendors'
-    //             }
-    //         }
-    //     }
-    // }
+    optimization: {
+        splitChunks: {
+          cacheGroups: {
+            default: {
+                name: 'common',
+                chunks: 'initial',
+                minChunks: 2,
+                priority: -20
+            },
+            vendors: {
+                test: /[\\/]node_modules[\\/]/,
+                name: 'vendor',
+                chunks: 'initial',
+                priority: -10
+            }
+          },
+        },
+      },
 };

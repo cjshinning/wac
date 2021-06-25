@@ -1,0 +1,178 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$role-tab-1-name: 'role-tab-1';
+$role-tab-1-x: 0px;
+$role-tab-1-y: 182px;
+$role-tab-1-offset-x: 0px;
+$role-tab-1-offset-y: -182px;
+$role-tab-1-width: 128px;
+$role-tab-1-height: 172px;
+$role-tab-1-total-width: 654px;
+$role-tab-1-total-height: 536px;
+$role-tab-1-image: './img/sprite_role_swiper.png';
+$role-tab-1: (0px, 182px, 0px, -182px, 128px, 172px, 654px, 536px, './img/sprite_role_swiper.png', 'role-tab-1', );
+$role-tab-2-name: 'role-tab-2';
+$role-tab-2-x: 138px;
+$role-tab-2-y: 182px;
+$role-tab-2-offset-x: -138px;
+$role-tab-2-offset-y: -182px;
+$role-tab-2-width: 128px;
+$role-tab-2-height: 172px;
+$role-tab-2-total-width: 654px;
+$role-tab-2-total-height: 536px;
+$role-tab-2-image: './img/sprite_role_swiper.png';
+$role-tab-2: (138px, 182px, -138px, -182px, 128px, 172px, 654px, 536px, './img/sprite_role_swiper.png', 'role-tab-2', );
+$role-tab-3-name: 'role-tab-3';
+$role-tab-3-x: 276px;
+$role-tab-3-y: 182px;
+$role-tab-3-offset-x: -276px;
+$role-tab-3-offset-y: -182px;
+$role-tab-3-width: 128px;
+$role-tab-3-height: 172px;
+$role-tab-3-total-width: 654px;
+$role-tab-3-total-height: 536px;
+$role-tab-3-image: './img/sprite_role_swiper.png';
+$role-tab-3: (276px, 182px, -276px, -182px, 128px, 172px, 654px, 536px, './img/sprite_role_swiper.png', 'role-tab-3', );
+$role-tab-4-name: 'role-tab-4';
+$role-tab-4-x: 414px;
+$role-tab-4-y: 182px;
+$role-tab-4-offset-x: -414px;
+$role-tab-4-offset-y: -182px;
+$role-tab-4-width: 128px;
+$role-tab-4-height: 172px;
+$role-tab-4-total-width: 654px;
+$role-tab-4-total-height: 536px;
+$role-tab-4-image: './img/sprite_role_swiper.png';
+$role-tab-4: (414px, 182px, -414px, -182px, 128px, 172px, 654px, 536px, './img/sprite_role_swiper.png', 'role-tab-4', );
+$role-tab-bg-name: 'role-tab-bg';
+$role-tab-bg-x: 0px;
+$role-tab-bg-y: 0px;
+$role-tab-bg-offset-x: 0px;
+$role-tab-bg-offset-y: 0px;
+$role-tab-bg-width: 654px;
+$role-tab-bg-height: 172px;
+$role-tab-bg-total-width: 654px;
+$role-tab-bg-total-height: 536px;
+$role-tab-bg-image: './img/sprite_role_swiper.png';
+$role-tab-bg: (0px, 0px, 0px, 0px, 654px, 172px, 654px, 536px, './img/sprite_role_swiper.png', 'role-tab-bg', );
+$role-tab-h1-name: 'role-tab-h1';
+$role-tab-h1-x: 0px;
+$role-tab-h1-y: 364px;
+$role-tab-h1-offset-x: 0px;
+$role-tab-h1-offset-y: -364px;
+$role-tab-h1-width: 128px;
+$role-tab-h1-height: 172px;
+$role-tab-h1-total-width: 654px;
+$role-tab-h1-total-height: 536px;
+$role-tab-h1-image: './img/sprite_role_swiper.png';
+$role-tab-h1: (0px, 364px, 0px, -364px, 128px, 172px, 654px, 536px, './img/sprite_role_swiper.png', 'role-tab-h1', );
+$role-tab-h2-name: 'role-tab-h2';
+$role-tab-h2-x: 138px;
+$role-tab-h2-y: 364px;
+$role-tab-h2-offset-x: -138px;
+$role-tab-h2-offset-y: -364px;
+$role-tab-h2-width: 128px;
+$role-tab-h2-height: 172px;
+$role-tab-h2-total-width: 654px;
+$role-tab-h2-total-height: 536px;
+$role-tab-h2-image: './img/sprite_role_swiper.png';
+$role-tab-h2: (138px, 364px, -138px, -364px, 128px, 172px, 654px, 536px, './img/sprite_role_swiper.png', 'role-tab-h2', );
+$role-tab-h3-name: 'role-tab-h3';
+$role-tab-h3-x: 276px;
+$role-tab-h3-y: 364px;
+$role-tab-h3-offset-x: -276px;
+$role-tab-h3-offset-y: -364px;
+$role-tab-h3-width: 128px;
+$role-tab-h3-height: 172px;
+$role-tab-h3-total-width: 654px;
+$role-tab-h3-total-height: 536px;
+$role-tab-h3-image: './img/sprite_role_swiper.png';
+$role-tab-h3: (276px, 364px, -276px, -364px, 128px, 172px, 654px, 536px, './img/sprite_role_swiper.png', 'role-tab-h3', );
+$role-tab-h4-name: 'role-tab-h4';
+$role-tab-h4-x: 414px;
+$role-tab-h4-y: 364px;
+$role-tab-h4-offset-x: -414px;
+$role-tab-h4-offset-y: -364px;
+$role-tab-h4-width: 128px;
+$role-tab-h4-height: 172px;
+$role-tab-h4-total-width: 654px;
+$role-tab-h4-total-height: 536px;
+$role-tab-h4-image: './img/sprite_role_swiper.png';
+$role-tab-h4: (414px, 364px, -414px, -364px, 128px, 172px, 654px, 536px, './img/sprite_role_swiper.png', 'role-tab-h4', );
+$spritesheet-width: 654px;
+$spritesheet-height: 536px;
+$spritesheet-image: './img/sprite_role_swiper.png';
+$spritesheet-sprites: ($role-tab-1, $role-tab-2, $role-tab-3, $role-tab-4, $role-tab-bg, $role-tab-h1, $role-tab-h2, $role-tab-h3, $role-tab-h4, );
+$spritesheet: (654px, 536px, './img/sprite_role_swiper.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

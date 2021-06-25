@@ -3,19 +3,19 @@
         <div class="inner">
             <ul>
                 <li class="nav-1">
-                    <a href="#" target="_blank">官网首页<i></i></a>
+                    <router-link target="_blank" :to="{ path: '/' }">官网首页<i></i></router-link>
                 </li>
                 <li class="nav-2">
-                    <a href="#" target="_blank">资讯中心<i></i></a>
+                    <router-link target="_blank" :to="{ path: '/xinwen', query: {page: 1} }">资讯中心<i></i></router-link>
                 </li>
                 <li class="nav-3">
-                    <a href="#" target="_blank">游戏特色<i></i></a>
+                    <router-link target="_blank" :to="{ path: '/gonglue', query: {page: 1} }">游戏特色<i></i></router-link>
                 </li>
                 <li class="nav-4">
-                    <a href="#" target="_blank">客服中心<i></i></a>
+                    <a href="//kf.37.com/" target="_blank">客服中心<i></i></a>
                 </li>
             </ul>
-            <a href="#" target="_blank" class="logo"></a>
+            <router-link target="_blank" class="logo" :to="{ path: '/' }"></router-link>
         </div>
     </div>
 </template>
@@ -29,8 +29,13 @@ export default {
 </script>
 <style lang="scss" scoped>
     .top-nav{
+        position: absolute;
+        left: 0;
+        top: 39px;
+        width: 100%;
         height: 97px;
         background: url('./img/top-nav.png') no-repeat top center; 
+        z-index: 999;
         .inner{
             position: relative;
             width: 1200px;

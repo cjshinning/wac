@@ -1,0 +1,7 @@
+@mixin sprite($sprite) {
+    @include sprite-image($sprite);
+    @include sprite-position($sprite);
+    @include sprite-width($sprite);
+    @include sprite-height($sprite);
+    background-size: #{$spritesheet-width} #{$spritesheet-height};
+}

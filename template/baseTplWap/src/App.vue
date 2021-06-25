@@ -7,7 +7,7 @@
 </template>
 <script>
 import './assets/css/main.scss';
-import MobileTip from './components/mobileTip/MobileTip';
+import MobileTip from './components/mobilet-tip/mobilet-tip';
 export default {
     data(){
         return{

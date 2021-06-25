@@ -1,0 +1,134 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$modal-btn-name: 'modal-btn';
+$modal-btn-x: 0px;
+$modal-btn-y: 313px;
+$modal-btn-offset-x: 0px;
+$modal-btn-offset-y: -313px;
+$modal-btn-width: 255px;
+$modal-btn-height: 73px;
+$modal-btn-total-width: 628px;
+$modal-btn-total-height: 386px;
+$modal-btn-image: './img/sprite_modal.png';
+$modal-btn: (0px, 313px, 0px, -313px, 255px, 73px, 628px, 386px, './img/sprite_modal.png', 'modal-btn', );
+$modal-close-hover-name: 'modal-close-hover';
+$modal-close-hover-x: 265px;
+$modal-close-hover-y: 313px;
+$modal-close-hover-offset-x: -265px;
+$modal-close-hover-offset-y: -313px;
+$modal-close-hover-width: 55px;
+$modal-close-hover-height: 55px;
+$modal-close-hover-total-width: 628px;
+$modal-close-hover-total-height: 386px;
+$modal-close-hover-image: './img/sprite_modal.png';
+$modal-close-hover: (265px, 313px, -265px, -313px, 55px, 55px, 628px, 386px, './img/sprite_modal.png', 'modal-close-hover', );
+$modal-close-name: 'modal-close';
+$modal-close-x: 330px;
+$modal-close-y: 313px;
+$modal-close-offset-x: -330px;
+$modal-close-offset-y: -313px;
+$modal-close-width: 55px;
+$modal-close-height: 55px;
+$modal-close-total-width: 628px;
+$modal-close-total-height: 386px;
+$modal-close-image: './img/sprite_modal.png';
+$modal-close: (330px, 313px, -330px, -313px, 55px, 55px, 628px, 386px, './img/sprite_modal.png', 'modal-close', );
+$modal-footer-name: 'modal-footer';
+$modal-footer-x: 0px;
+$modal-footer-y: 0px;
+$modal-footer-offset-x: 0px;
+$modal-footer-offset-y: 0px;
+$modal-footer-width: 628px;
+$modal-footer-height: 176px;
+$modal-footer-total-width: 628px;
+$modal-footer-total-height: 386px;
+$modal-footer-image: './img/sprite_modal.png';
+$modal-footer: (0px, 0px, 0px, 0px, 628px, 176px, 628px, 386px, './img/sprite_modal.png', 'modal-footer', );
+$modal-header-name: 'modal-header';
+$modal-header-x: 0px;
+$modal-header-y: 186px;
+$modal-header-offset-x: 0px;
+$modal-header-offset-y: -186px;
+$modal-header-width: 628px;
+$modal-header-height: 117px;
+$modal-header-total-width: 628px;
+$modal-header-total-height: 386px;
+$modal-header-image: './img/sprite_modal.png';
+$modal-header: (0px, 186px, 0px, -186px, 628px, 117px, 628px, 386px, './img/sprite_modal.png', 'modal-header', );
+$spritesheet-width: 628px;
+$spritesheet-height: 386px;
+$spritesheet-image: './img/sprite_modal.png';
+$spritesheet-sprites: ($modal-btn, $modal-close-hover, $modal-close, $modal-footer, $modal-header, );
+$spritesheet: (628px, 386px, './img/sprite_modal.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

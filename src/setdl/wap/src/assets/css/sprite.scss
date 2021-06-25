@@ -1,0 +1,145 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$civet-cat-name: 'civet-cat';
+$civet-cat-x: 693px;
+$civet-cat-y: 0px;
+$civet-cat-offset-x: -693px;
+$civet-cat-offset-y: 0px;
+$civet-cat-width: 190px;
+$civet-cat-height: 185px;
+$civet-cat-total-width: 883px;
+$civet-cat-total-height: 674px;
+$civet-cat-image: '../img/sprite.png';
+$civet-cat: (693px, 0px, -693px, 0px, 190px, 185px, 883px, 674px, '../img/sprite.png', 'civet-cat', );
+$paper-clip-name: 'paper-clip';
+$paper-clip-x: 693px;
+$paper-clip-y: 195px;
+$paper-clip-offset-x: -693px;
+$paper-clip-offset-y: -195px;
+$paper-clip-width: 90px;
+$paper-clip-height: 70px;
+$paper-clip-total-width: 883px;
+$paper-clip-total-height: 674px;
+$paper-clip-image: '../img/sprite.png';
+$paper-clip: (693px, 195px, -693px, -195px, 90px, 70px, 883px, 674px, '../img/sprite.png', 'paper-clip', );
+$title1-name: 'title1';
+$title1-x: 0px;
+$title1-y: 513px;
+$title1-offset-x: 0px;
+$title1-offset-y: -513px;
+$title1-width: 656px;
+$title1-height: 161px;
+$title1-total-width: 883px;
+$title1-total-height: 674px;
+$title1-image: '../img/sprite.png';
+$title1: (0px, 513px, 0px, -513px, 656px, 161px, 883px, 674px, '../img/sprite.png', 'title1', );
+$title2-name: 'title2';
+$title2-x: 0px;
+$title2-y: 0px;
+$title2-offset-x: 0px;
+$title2-offset-y: 0px;
+$title2-width: 683px;
+$title2-height: 161px;
+$title2-total-width: 883px;
+$title2-total-height: 674px;
+$title2-image: '../img/sprite.png';
+$title2: (0px, 0px, 0px, 0px, 683px, 161px, 883px, 674px, '../img/sprite.png', 'title2', );
+$title3-name: 'title3';
+$title3-x: 0px;
+$title3-y: 342px;
+$title3-offset-x: 0px;
+$title3-offset-y: -342px;
+$title3-width: 663px;
+$title3-height: 161px;
+$title3-total-width: 883px;
+$title3-total-height: 674px;
+$title3-image: '../img/sprite.png';
+$title3: (0px, 342px, 0px, -342px, 663px, 161px, 883px, 674px, '../img/sprite.png', 'title3', );
+$title4-name: 'title4';
+$title4-x: 0px;
+$title4-y: 171px;
+$title4-offset-x: 0px;
+$title4-offset-y: -171px;
+$title4-width: 682px;
+$title4-height: 161px;
+$title4-total-width: 883px;
+$title4-total-height: 674px;
+$title4-image: '../img/sprite.png';
+$title4: (0px, 171px, 0px, -171px, 682px, 161px, 883px, 674px, '../img/sprite.png', 'title4', );
+$spritesheet-width: 883px;
+$spritesheet-height: 674px;
+$spritesheet-image: '../img/sprite.png';
+$spritesheet-sprites: ($civet-cat, $paper-clip, $title1, $title2, $title3, $title4, );
+$spritesheet: (883px, 674px, '../img/sprite.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

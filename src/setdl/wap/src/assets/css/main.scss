@@ -1,0 +1,204 @@
+@import './asset.scss';
+@import './sprite.scss';
+@import './mixins.scss';
+
+body{
+    font: 12px/1.5 "Microsoft Yahei",SimSun;
+    background: url('../img/bg.png') repeat top center;
+}
+
+.container{
+    max-width: 1080px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    *{
+        box-sizing: inherit;
+    }
+    a{
+        text-decoration: none;
+    }
+}
+
+.banner{
+    position: relative;
+    width: 750px;
+    height: 1200px;
+    // background: url('../img/banner.jpg') no-repeat;
+    background-size: cover;
+    .gamesite-tip16{
+        display: block;
+        position: absolute;
+        left: 20px;
+        top: 970px;
+        width: 79px;
+        height: 102px;
+        background: url('../img/gamesite-tip16.png') no-repeat;
+        background-size: cover;
+    }
+    .kv{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 750px;
+        height: 1200px;
+        a{
+            display: block;
+        }
+    }
+}
+
+.section1{
+    position: relative;
+    width: 750px;
+    height: 1110px;
+    padding-top: 8px;
+    background: url('../img/bg1.jpg') no-repeat;
+    background-size: cover;
+    .title{
+        width: 656px;
+        height: 161px;
+        @include sprite($title1);
+        margin: 0 48px 0 46px;
+        text-indent: -9999px;
+    }
+    .kv-wrap{
+        position: relative;
+        width: 654px;
+        height: 397px;
+        margin: 20px auto 0;
+        background: url('../img/book.png') no-repeat;
+        background-size: cover;
+        padding: 24px 26px 29px;
+        .paper-clip{
+            position: absolute;
+            left: -13px;
+            top: -6px;
+            width: 90px;
+            height: 70px;
+            @include sprite($paper-clip);
+            z-index: 2;
+        }
+        .civet-cat{
+            position: absolute;
+            left: -48px;
+            top: 242px;
+            width: 190px;
+            height: 185px;
+            @include sprite($civet-cat);
+            z-index: 2;
+        }
+    }
+}
+.section2{
+    width: 750px;
+    height: 1190px;
+    padding-top: 64px;
+    background: url('../img/bg2.jpg') no-repeat;
+    background-size: cover;
+    .title{
+        width: 683px;
+        height: 161px;
+        @include sprite($title2);
+        margin: 0 23px 0 44px;
+        text-indent: -9999px;
+    }
+    .role-wrap{
+        position: relative;
+        width: 750px;
+        margin-top: 34px;
+    }
+}
+.section3{
+    position: relative;
+    width: 750px;
+    height: 1018px;
+    padding-top: 44px;
+    background: url('../img/bg3.jpg') no-repeat;
+    background-size: cover;
+    .title{
+        width: 663px;
+        height: 161px;
+        @include sprite($title3);
+        margin: 0 40px 0 47px;
+        text-indent: -9999px;
+    }
+}
+.section4{
+    position: relative;
+    width: 750px;
+    height: 1074px;
+    padding-top: 54px;
+    background: url('../img/bg4.jpg') no-repeat;
+    background-size: cover;
+    .title{
+        width: 682px;
+        height: 161px;
+        @include sprite($title4);
+        margin: 0 23px 0 45px;
+        text-indent: -9999px;
+    }
+}
+.section5{
+    width: 100%;
+    height: 112px;
+    padding-top: 16px;
+    background: url('../img/bg5.png') no-repeat top center;
+}
+
+.article{
+    .main{
+        width: 708px;
+        margin: 125px auto 30px;
+        background: #fff;
+        overflow: hidden;
+    }
+    .article-content{
+        padding: 36px 28px;
+        h3{
+            padding: 10px 0;
+            line-height: 44px;
+            text-align: center;
+            font-size: 36px;
+            color: #5390f4;
+        }
+        .detail{
+            margin-top: 10px;
+            line-height: 36px;
+            text-align: center;
+            font-size: 18px;
+            color: #6c6c6c;
+        }
+        .line{
+            width: 100%;
+            height: 1px;
+            background: #383c47;
+            overflow: hidden;
+            margin: 40px 0 20px;
+        }
+        .cont{
+            padding: 10px 0;
+            p{
+                line-height: 40px;
+                font-size: 24px;
+                color: #1a0e11;
+            }
+            img{
+                max-width: 100%;
+            }
+        }
+    }
+}
+// 规则弹窗
+.rule-box{
+    height: 300px;
+    overflow-y: scroll;
+}
+// 关注我们弹窗
+.public-code{
+    width: 225px;
+    height: 225px;
+    border: 5px solid #b19f8e;
+    background: #fff;
+    margin: 0 auto;
+}

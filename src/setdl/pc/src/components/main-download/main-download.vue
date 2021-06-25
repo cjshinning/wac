@@ -2,16 +2,16 @@
     <div class="main-download">
         <div class="tip"></div>
         <div class="qr-code">
-            <img v-lazy="qrDownload" width="100%" alt="">
+            <img v-lazy="download.qrcode" width="100%" alt="">
         </div>
-        <a href="#" target="_blank" class="btn-android">安卓下载</a>
-        <a href="#" target="_blank" class="btn-ios">ios下载</a>
+        <a :href="download.androidLink" target="_blank" class="btn-android">安卓下载</a>
+        <a :href="download.appLink" target="_blank" class="btn-ios">ios下载</a>
     </div>
 </template>
 <script>
 
 export default {
-    props: ['qrDownload'],
+    props: ['download'],
     data(){
         return{
         }
@@ -24,7 +24,7 @@ export default {
         position: absolute;
         left: 50%;
         margin-left: -234px;
-        top: 692px;
+        top: 788px;
         width: 468px;
         height: 184px;
         background: #f1f1f1;
@@ -35,7 +35,6 @@ export default {
             top: 28px;
             width: 16px;
             height: 123px;
-            // background: url('./img/download-tip.png') no-repeat;
             @include sprite($download-tip);
         }
         .qr-code{
@@ -64,10 +63,8 @@ export default {
         .btn-ios{
             top: 99px;
             @include sprite($btn-ios);
-            // background: url('./img/btn-ios.png') no-repeat;
             &:hover{
                 @include sprite($btn-ios-h);
-                // background: url('./img/btn-ios-h.png') no-repeat;
             }
         }
     }

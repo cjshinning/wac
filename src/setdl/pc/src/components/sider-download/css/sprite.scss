@@ -1,0 +1,134 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$btn-android-h-name: 'btn-android-h';
+$btn-android-h-x: 312px;
+$btn-android-h-y: 0px;
+$btn-android-h-offset-x: -312px;
+$btn-android-h-offset-y: 0px;
+$btn-android-h-width: 238px;
+$btn-android-h-height: 65px;
+$btn-android-h-total-width: 550px;
+$btn-android-h-total-height: 458px;
+$btn-android-h-image: './img/sprite_sider_download.png';
+$btn-android-h: (312px, 0px, -312px, 0px, 238px, 65px, 550px, 458px, './img/sprite_sider_download.png', 'btn-android-h', );
+$btn-android-name: 'btn-android';
+$btn-android-x: 312px;
+$btn-android-y: 75px;
+$btn-android-offset-x: -312px;
+$btn-android-offset-y: -75px;
+$btn-android-width: 238px;
+$btn-android-height: 65px;
+$btn-android-total-width: 550px;
+$btn-android-total-height: 458px;
+$btn-android-image: './img/sprite_sider_download.png';
+$btn-android: (312px, 75px, -312px, -75px, 238px, 65px, 550px, 458px, './img/sprite_sider_download.png', 'btn-android', );
+$btn-ios-h-name: 'btn-ios-h';
+$btn-ios-h-x: 312px;
+$btn-ios-h-y: 150px;
+$btn-ios-h-offset-x: -312px;
+$btn-ios-h-offset-y: -150px;
+$btn-ios-h-width: 238px;
+$btn-ios-h-height: 65px;
+$btn-ios-h-total-width: 550px;
+$btn-ios-h-total-height: 458px;
+$btn-ios-h-image: './img/sprite_sider_download.png';
+$btn-ios-h: (312px, 150px, -312px, -150px, 238px, 65px, 550px, 458px, './img/sprite_sider_download.png', 'btn-ios-h', );
+$btn-ios-name: 'btn-ios';
+$btn-ios-x: 312px;
+$btn-ios-y: 225px;
+$btn-ios-offset-x: -312px;
+$btn-ios-offset-y: -225px;
+$btn-ios-width: 238px;
+$btn-ios-height: 65px;
+$btn-ios-total-width: 550px;
+$btn-ios-total-height: 458px;
+$btn-ios-image: './img/sprite_sider_download.png';
+$btn-ios: (312px, 225px, -312px, -225px, 238px, 65px, 550px, 458px, './img/sprite_sider_download.png', 'btn-ios', );
+$sider-bg-name: 'sider-bg';
+$sider-bg-x: 0px;
+$sider-bg-y: 0px;
+$sider-bg-offset-x: 0px;
+$sider-bg-offset-y: 0px;
+$sider-bg-width: 302px;
+$sider-bg-height: 458px;
+$sider-bg-total-width: 550px;
+$sider-bg-total-height: 458px;
+$sider-bg-image: './img/sprite_sider_download.png';
+$sider-bg: (0px, 0px, 0px, 0px, 302px, 458px, 550px, 458px, './img/sprite_sider_download.png', 'sider-bg', );
+$spritesheet-width: 550px;
+$spritesheet-height: 458px;
+$spritesheet-image: './img/sprite_sider_download.png';
+$spritesheet-sprites: ($btn-android-h, $btn-android, $btn-ios-h, $btn-ios, $sider-bg, );
+$spritesheet: (550px, 458px, './img/sprite_sider_download.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

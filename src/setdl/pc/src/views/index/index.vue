@@ -3,7 +3,15 @@
         <top-nav></top-nav>
         <div class="banner">
             <div class="inner">
-                <main-download :qrDownload="qrDownload"></main-download>
+                <div class="kv">
+                    <a :href="topImg.link" target="_blank">
+                        <img :src="topImg.img" alt="">
+                    </a>
+                </div>
+                <main-download :download="downloadConfig"></main-download>
+                <a href="javascript:;" class="gamesite-tip16" v-if="tip16Content" @click="showTip16()" :style="{top: tip16Config.mob_index_top&&tip16Config.mob_index_top+'px', left: tip16Config.mob_index_left&&tip16Config.mob_index_left+'px', backgroundImage: `url(${tip16Config.mob_index_img}`}"></a>
+                <a href="javascript:;" class="btn-play" @click.prevent="showVideo()"></a>
+                <div class="cloud"></div>
             </div>
         </div>
         <div class="section1">
@@ -17,6 +25,7 @@
                     </div>
                     <news-swiper :news="indexNews"></news-swiper>
                 </div>
+                <div class="balloon"></div>
             </div>
         </div>
         <div class="section2">
@@ -56,10 +65,22 @@ import RoleTab from '../../components/role-tab/role-tab';
 import FunnySwiper from '../../components/funny-swiper/funny-swiper';
 import FeatureSwiper from '../../components/feature-swiper/feature-swiper';
 import QrCodes from '../../components/qr-codes/qr-codes';
+import role1 from '../../../extras/img/role-1.png';
+import role2 from '../../../extras/img/role-2.png';
+import role3 from '../../../extras/img/role-3.png';
+import role4 from '../../../extras/img/role-4.png';
 export default {
     data(){
         return{
-            qrDownload: '',
+            topImg: {
+                img: '',
+                link: ''
+            },
+            downloadConfig: {
+                qrcode: '',
+                androidLink: '',
+                appLink: ''
+            },
             reserveLink: '',
             kvConfig: {
                 imgs: [],
@@ -69,10 +90,10 @@ export default {
                 current: 0,
                 tabs: ['战士', '法师', '祭师', '小丑'],
                 pannels: [
-                    '//img1.37wanimg.com/setdl/pc/extras/img/role-1.png',
-                    '//img1.37wanimg.com/setdl/pc/extras/img/role-2.png',
-                    '//img1.37wanimg.com/setdl/pc/extras/img/role-3.png',
-                    '//img1.37wanimg.com/setdl/pc/extras/img/role-4.png'
+                    role1,
+                    role2,
+                    role3,
+                    role4
                 ]
             },
             funnyConfig: {
@@ -93,8 +114,14 @@ export default {
                 'zonghe': [],
                 'xinwen': [],
                 'huodong': [],
-                'gonglve': []
+                'gonglue': []
             },
+            tip16Content: '',
+            tip16Config: {
+                mob_index_img: '',
+                mob_index_left: '',
+                mob_index_top: ''
+            }
         }
     },
     methods: {
@@ -108,8 +135,18 @@ export default {
                     for(let key in res.data){
                         let data = res.data[key];
                         switch(key){
+                            case 'top_img':
+                                this.topImg.img = data.imgs[0];
+                                this.topImg.link = data.links[0];
+                                break;
                             case 'pc_qrcode_download':
-                                this.qrDownload = data.imgs[0];
+                                this.downloadConfig.qrcode = data.imgs[0];
+                                break;
+                            case 'download_and_link':
+                                this.downloadConfig.androidLink = data.text[0];
+                                break;
+                            case 'download_app_link':
+                                this.downloadConfig.appLink = data.text[0];
                                 break;
                             case 'index_focus':
                                 this.kvConfig.imgs = data.imgs;
@@ -130,6 +167,15 @@ export default {
                                 break;
                             case 'reserve_link':
                                 this.reserveLink = data.text;
+                                break;
+                            case 'gamesite_fcm_content_tips':
+                                this.tip16Content = data.content;
+                                break;
+                            case 'gamesite_fcm_tips':
+                                this.tip16Config.mob_index_img = data.data[0].mob_index_img;
+                                this.tip16Config.mob_index_left = data.data[0].mob_index_left;
+                                this.tip16Config.mob_index_top = data.data[0].mob_index_top;
+                                break;
                         }
                     }
                 }
@@ -154,11 +200,28 @@ export default {
                             this.indexNews.huodong = res.data;
                             break;
                         case 4:
-                            this.indexNews.gonglve = res.data;
+                            this.indexNews.gonglue = res.data;
                             break;
                     }
                 }
                 
+            })
+        },
+        showTip16(){
+            let content = `
+                <div class="rule-box">
+                    ${this.tip16Content}
+                </div>
+            `;
+            this.$modal({
+                width: 508,
+                title: '适龄提示',
+                content
+            });
+        },
+        showVideo(){
+            this.$video({
+                videoSrc: '//video.37wanimg.com/setdl/yuyue/202105/setdl.mp4'
             })
         }
     },
@@ -173,11 +236,11 @@ export default {
         QrCodes
     },
     mounted(){
-        this.getContent('pc_qrcode_download,index_focus,funny_img,feature_img,footer_qr,reserve_link');
         this.getIndexNews(0,6);
         this.getIndexNews(1,6);
         this.getIndexNews(2,6);
         this.getIndexNews(4,6);
+        this.getContent('top_img,pc_qrcode_download,download_and_link,download_app_link,index_focus,funny_img,feature_img,footer_qr,reserve_link,gamesite_fcm_content_tips,gamesite_fcm_tips');
     }
 }
 </script>

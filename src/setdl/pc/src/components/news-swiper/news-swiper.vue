@@ -27,7 +27,7 @@
       </swiper-slide>
       <swiper-slide>
         <ul>
-          <li v-for="(item,index) in news.gonglve" :key="index">
+          <li v-for="(item,index) in news.gonglue" :key="index">
             <span>{{item.PUB_TIME}}</span>
             <router-link target="_blank" :to="'/'+cate+'/'+item.ID">{{item.TITLE}}</router-link>
           </li>
@@ -35,7 +35,7 @@
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-    <router-link target="_blank" :to="{ path: cate }" class="news-more">更多+</router-link>
+    <router-link target="_blank" :to="{ path: cate, query:{ page: 1 } }" class="news-more">更多+</router-link>
   </div>
 </template>
 
@@ -61,7 +61,6 @@
               return `<span class='${className} swiper-pagination-bullet-custom'>${tabs[index]}</span>`
             }
           },
-          // Some Swiper option/callback...
         }
       }
     },

@@ -8,7 +8,14 @@
     <link rel="shortcut icon" href="//img1.37wanimg.com/www/images/common/37/favicon.ico" type="image/x-icon" />
     <title>《赛尔特大陆》官网</title>
     <script>
-        console.log('白屏时间：' + (new Date() - performance.timing.navigationStart));
+        let search = window.location.search;
+        if(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)){
+            if(search){
+                window.location.href = '//www.37.com/setdl/wap/' + search;
+            }else{
+                window.location.href = '//www.37.com/setdl/wap/';
+            }
+        }
     </script>
     <link rel="stylesheet" type="text/css" href="//img1.37wanimg.com/www/css/global.css?t=20210306101156"/>
     <script type="text/javascript">
@@ -27,10 +34,5 @@
     <div id="app"></div>
     <script type="text/javascript" src="//ptres.37.com/js/sq/lib/sq.core.js?t=20140327115259"></script>
     <script type="text/javascript" id="sq-statis-refer" src="//ptres.37.com/js/sq/widget/sq.game.all.js?t=20210413091759"></script>
-    <script>
-        window.onload = function(){
-            console.log('首屏时间：' + (new Date() - performance.timing.navigationStart));
-        }
-    </script>
 </body>
 </html>
