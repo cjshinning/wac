@@ -35,7 +35,7 @@ export default {
         width: 100%;
         height: 97px;
         background: url('./img/top-nav.png') no-repeat top center; 
-        z-index: 999;
+        // z-index: 999;
         .inner{
             position: relative;
             width: 1200px;

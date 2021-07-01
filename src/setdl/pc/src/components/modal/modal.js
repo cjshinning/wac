@@ -12,7 +12,7 @@ class Modal{
             width: 508,
             height: 'auto',
             className: '',
-            title: '',
+            title: '温馨提示',
             content: '',
             closeCb(){
                 that.hide();

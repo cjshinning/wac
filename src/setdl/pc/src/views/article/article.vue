@@ -1,7 +1,7 @@
 <template>
     <div class="article">
-        <top-nav></top-nav>
         <div class="c-kv"></div>
+        <top-nav></top-nav>
         <div class="c-wrap">
             <sider-download :download="downloadConfig"></sider-download>
             <div class="c-main">

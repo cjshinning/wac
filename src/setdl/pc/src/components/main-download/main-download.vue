@@ -4,17 +4,31 @@
         <div class="qr-code">
             <img v-lazy="download.qrcode" width="100%" alt="">
         </div>
-        <a :href="download.androidLink" target="_blank" class="btn-android">安卓下载</a>
-        <a :href="download.appLink" target="_blank" class="btn-ios">ios下载</a>
+        <a href="javascript:;" class="btn-android" @click="showWaiting(download.androidLink)">安卓下载</a>
+        <a href="javascript:;" class="btn-ios" @click="showWaiting(download.appLink)">ios下载</a>
     </div>
 </template>
 <script>
-
+import mixin from '../../assets/js/mixin.js';
 export default {
     props: ['download'],
+    mixins: [mixin],
     data(){
         return{
         }
+    },
+    methods: {
+        // showWaiting(link){
+        //     if(!link){
+        //         this.$modal({
+        //             width: 508,
+        //             height: 200,
+        //             content: '敬请期待'
+        //         });
+        //     }else{
+        //         window.open(link);
+        //     }
+        // }
     }
 }
 </script>

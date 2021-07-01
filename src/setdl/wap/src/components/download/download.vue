@@ -4,13 +4,15 @@
         <div class="qr-box">
             <img :src="config.qrSrc" width="100%" alt="">
         </div>
-        <a :href="config.androidLink" class="btn-android">android下载</a>
-        <a :href="config.appstoreLink" class="btn-appstore">appstore下载</a>
+        <a href="javascript:;" class="btn-android" @click="showWaiting(config.androidLink)">android下载</a>
+        <a href="javascript:;" class="btn-appstore" @click="showWaiting(config.appstoreLink)">appstore下载</a>
     </div>
 </template>
 <script>
+import mixin from '../../assets/js/mixin.js';
 export default {
     props: ['config'],
+    mixins: [mixin],
     data(){
         return{
 

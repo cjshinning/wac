@@ -78,6 +78,7 @@ export default {
     padding: 12px 60px;
     margin: -2px 0;
     font-size: 18px;
+    text-align: center;
     line-height: 36px;
     color: #594f48;
     // &::before{

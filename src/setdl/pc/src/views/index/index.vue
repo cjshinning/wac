@@ -1,6 +1,5 @@
 <template>
     <div class="index">
-        <top-nav></top-nav>
         <div class="banner">
             <div class="inner">
                 <div class="kv">
@@ -8,12 +7,13 @@
                         <img :src="topImg.img" alt="">
                     </a>
                 </div>
+                <div class="cloud"></div>
                 <main-download :download="downloadConfig"></main-download>
                 <a href="javascript:;" class="gamesite-tip16" v-if="tip16Content" @click="showTip16()" :style="{top: tip16Config.mob_index_top&&tip16Config.mob_index_top+'px', left: tip16Config.mob_index_left&&tip16Config.mob_index_left+'px', backgroundImage: `url(${tip16Config.mob_index_img}`}"></a>
                 <a href="javascript:;" class="btn-play" @click.prevent="showVideo()"></a>
-                <div class="cloud"></div>
             </div>
         </div>
+        <top-nav></top-nav>
         <div class="section1">
             <div class="inner">
                 <h2 class="title">资讯栏</h2>

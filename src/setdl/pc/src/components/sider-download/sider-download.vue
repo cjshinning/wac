@@ -5,14 +5,16 @@
         </div>
         <div class="qr-tip">扫一扫 下载游戏</div>
         <div class="download-btns">
-            <a :href="download.androidLink" target="_blank" class="btn-android">安卓下载</a>
-            <a :href="download.appLink" target="_blank" class="btn-ios">ios下载</a>
+            <a href="javascript:;" class="btn-android" @click="showWaiting(download.androidLink)">安卓下载</a>
+            <a href="javascript:;" class="btn-ios" @click="showWaiting(download.appLink)">ios下载</a>
         </div>
     </div>
 </template>
 <script>
+import mixin from '../../assets/js/mixin.js';
 export default {
     props: ['download'],
+    mixins: [mixin],
     data(){
         return{
         }

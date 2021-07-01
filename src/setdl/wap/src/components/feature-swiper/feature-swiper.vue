@@ -50,9 +50,9 @@
           },
           coverflowEffect: {
             rotate: 0,
-            stretch: 30,
-            depth: 35,
-            modifier: 10,
+            stretch: 10,
+            depth: 50,
+            modifier: 3,
             slideShadows : true
           },
           navigation: {
