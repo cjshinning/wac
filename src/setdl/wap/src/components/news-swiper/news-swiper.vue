@@ -35,7 +35,7 @@
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-    <router-link :to="{ path: '/list' }" class="news-more">更多+</router-link>
+    <router-link :to="{ path: '/list/' }" class="news-more">更多+</router-link>
   </div>
 </template>
 

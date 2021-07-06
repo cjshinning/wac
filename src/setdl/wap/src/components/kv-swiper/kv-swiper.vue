@@ -35,7 +35,7 @@
         },
         computed: {
             showSwiper(){
-                return this.kv.imgs.length;
+                return this.kv.imgs;
             },
         },
         mounted() {

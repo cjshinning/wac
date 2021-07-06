@@ -43,7 +43,7 @@
         },
         computed: {
             showSwiper(){
-                return this.role.imgs.length;
+                return this.role.imgs;
             },
         },
         mounted() {

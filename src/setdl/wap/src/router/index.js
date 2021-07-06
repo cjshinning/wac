@@ -7,8 +7,8 @@ import Article from '../views/article/article.vue';
 Vue.use(Router);
 
 export default new Router({
-    base: '/setdl/wap/',
-    mode: 'history',
+    // base: '/setdl/wap/',
+    // mode: 'history',
     routes: [
         {
             path: '/',

@@ -18,9 +18,7 @@
                 <a target="_blank" rel="nofollow" href="http://www.miitbeian.gov.cn/">沪ICP备11049082号-5</a>|
                 <a href="//img1.37wanimg.com/www/images/common/icp.jpg" target="_blank" rel="nofollow">增值电信业务经营许可证沪B2-20140017</a>
             </p>
-            <p class="g-footer-row3-3">
-                
-                                                <span>新出审字[2013]822号</span>|            	                        	                <span>软著登字第0484989号</span>|            	                        	                <span>ISBN 978-7-89989-710-2</span>            	                    </p>
+            <p class="g-footer-row3-3">ISBN 978-7-498-08785-0|国新出审[2021]260号|出版单位：黑龙江龙华数字出版股份有限公司|著作权人：芜湖市明清网络有限公司</p>
             <p class="g-footer-row3-4">文化部网络游戏举报和联系电子邮箱：wlwh@vip.sina.com 纠纷处理方式：联系客服或依《用户协议》约定方式处理 | <a target="_blank" rel="nofollow" href="http://www.shjbzx.cn/">上海市互联网违法和不良信息举报中心</a></p>
             <p class="g-footer-row3-5">
                 <a href="http://www.cyberpolice.cn/wfjb/html/index.shtml" class="e-link" target="_blank"><img src="//img1.37wanimg.com/www/images/common/blxxjbzx.png" alt="">不良信息举报中心</a>                                                      

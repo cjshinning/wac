@@ -125,41 +125,81 @@ export default {
                         let data = res.data[key];
                         switch(key){
                             case 'wap_top_img':
-                                this.topImg.img = data.imgs[0];
-                                this.topImg.link = data.links[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.topImg.img = data.imgs[0];
+                                    this.topImg.link = data.links[0];
+                                }else{
+                                    console.log('wap_top_img未填写内容');
+                                }
                                 break;
                             case 'wap_icon':
-                                this.navConfig.iconSrc = data.imgs[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.navConfig.iconSrc = data.imgs[0];
+                                }else{
+                                    console.log('wap_icon未填写内容');
+                                }
                                 break;
                             case 'wap_reserve_link':
-                                this.navConfig.reserveLink = data.links[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.navConfig.reserveLink = data.links[0];
+                                }else{
+                                    console.log('wap_reserve_link未填写内容');
+                                }
                                 break;
                             case 'wap_download_qr':
-                                this.downloadConfig.qrSrc = data.imgs[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.downloadConfig.qrSrc = data.imgs[0];
+                                }else{
+                                    console.log('wap_download_qr未填写内容');
+                                }
                                 break;
                             case 'wap_download_android':
-                                this.downloadConfig.androidLink = data.links[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.downloadConfig.androidLink = data.links[0];
+                                }else{
+                                    console.log('wap_download_android未填写内容');
+                                }
                                 break;
                             case 'wap_download_appstore':
-                                this.downloadConfig.appstoreLink = data.links[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.downloadConfig.appstoreLink = data.links[0];
+                                }else{
+                                    console.log('wap_download_appstore未填写内容');
+                                }
                                 break;
                             case 'wap_kv':
-                                this.kvConfig.imgs = data.imgs;
-                                this.kvConfig.links = data.links;
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.kvConfig.imgs = data.imgs;
+                                    this.kvConfig.links = data.links;
+                                }else{
+                                    console.log('wap_kv未填写内容');
+                                }
                                 break;
                             case 'funny_img':
-                                this.funnyConfig.imgs = data.imgs;
-                                this.funnyConfig.text = data.text;
-                                this.funnyConfig.thumb = data.thumbnails;
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.funnyConfig.imgs = data.imgs;
+                                    this.funnyConfig.text = data.text;
+                                    this.funnyConfig.thumb = data.thumbnails;
+                                }else{
+                                    console.log('funny_img未填写内容');
+                                }
                                 break;
                             case 'wap_feature_img':
-                                this.fetureConfig.imgs = data.imgs;
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.fetureConfig.imgs = data.imgs;
+                                }else{
+                                    console.log('wap_feature_img未填写内容');
+                                }
                                 break;
                             case 'footer_qr':
-                                this.qrcodeConfig.names = data.links;
-                                this.qrcodeConfig.imgs = data.imgs;
-                                this.qrcodeConfig.infos = data.text;
-                                this.navConfig.publicSrc = data.imgs[2];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.qrcodeConfig.names = data.links;
+                                    this.qrcodeConfig.imgs = data.imgs;
+                                    this.qrcodeConfig.infos = data.text;
+                                    this.navConfig.publicSrc = data.imgs[2];
+                                }else{
+                                    console.log('footer_qr未填写内容');
+                                }
                                 break;
                             case 'gamesite_fcm_content_tips':
                                 this.tip16Content = data.content;

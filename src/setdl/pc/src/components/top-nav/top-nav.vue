@@ -6,10 +6,12 @@
                     <router-link target="_blank" :to="{ path: '/' }">官网首页<i></i></router-link>
                 </li>
                 <li class="nav-2">
-                    <router-link target="_blank" :to="{ path: '/xinwen', query: {page: 1} }">资讯中心<i></i></router-link>
+                    <!-- <router-link target="_blank" :to="{ path: 'xinwen', query: {page: 1} }">资讯中心<i></i></router-link> -->
+                    <a href="//www.37.com/setdl/#/xinwen?page=1" target="_blank">资讯中心<i></i></a>
                 </li>
                 <li class="nav-3">
-                    <router-link target="_blank" :to="{ path: '/gonglue', query: {page: 1} }">游戏特色<i></i></router-link>
+                    <!-- <router-link target="_blank" :to="{ path: 'gonglue', query: {page: 1} }">游戏特色<i></i></router-link> -->
+                    <a href="//www.37.com/setdl/#/gonglue?page=1" target="_blank">游戏特色<i></i></a>
                 </li>
                 <li class="nav-4">
                     <a href="//kf.37.com/" target="_blank">客服中心<i></i></a>
@@ -97,11 +99,11 @@ export default {
             display: block;
             position: absolute;
             left: 50%;
-            margin-left: -104px;
+            margin-left: -79px;
             top: 0;
-            width: 208px;
+            width: 158px;
             height: 96px;
-            background: url('./img/logo.png') no-repeat;
+            background: url('./img/logo2.png') no-repeat;
         }
     }
 </style>

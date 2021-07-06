@@ -7,8 +7,8 @@ import Article from '../views/article/article.vue';
 Vue.use(Router);
 
 export default new Router({
-    base: '/setdl/',
-    mode: 'history',
+    // base: '/setdl/',
+    // mode: 'history',
     routes: [
         {
             path: '/',
@@ -18,7 +18,8 @@ export default new Router({
         {
           path: '/:cate',
           name: 'list',
-          component: List
+          component: List,
+          props: route => ({ query: route.query.page })
         },
         {
             path: '/:cate/:id',

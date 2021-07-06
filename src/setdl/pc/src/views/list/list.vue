@@ -68,13 +68,25 @@ export default {
                         let data = res.data[key];
                         switch(key){
                             case 'pc_qrcode_download':
-                                this.downloadConfig.qrcode = data.imgs[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.downloadConfig.qrcode = data.imgs[0];
+                                }else{
+                                    console.log('pc_qrcode_download未填写内容');
+                                }
                                 break;
                             case 'download_and_link':
-                                this.downloadConfig.androidLink = data.text[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.downloadConfig.androidLink = data.text[0];
+                                }else{
+                                    console.log('download_and_link未填写内容');
+                                }
                                 break;
                             case 'download_app_link':
-                                this.downloadConfig.appLink = data.text[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.downloadConfig.appLink = data.text[0];
+                                }else{
+                                    console.log('download_app_link未填写内容');
+                                }
                                 break;
                         }
                     }

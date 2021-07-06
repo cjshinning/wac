@@ -121,7 +121,8 @@ export default {
                 mob_index_img: '',
                 mob_index_left: '',
                 mob_index_top: ''
-            }
+            },
+            topVideo: ''
         }
     },
     methods: {
@@ -136,34 +137,66 @@ export default {
                         let data = res.data[key];
                         switch(key){
                             case 'top_img':
-                                this.topImg.img = data.imgs[0];
-                                this.topImg.link = data.links[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.topImg.img = data.imgs[0];
+                                    this.topImg.link = data.links[0];
+                                }else{
+                                    console.log('top_img未填写内容');
+                                }
                                 break;
                             case 'pc_qrcode_download':
-                                this.downloadConfig.qrcode = data.imgs[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.downloadConfig.qrcode = data.imgs[0];
+                                }else{
+                                    console.log('pc_qrcode_download未填写内容');
+                                }
                                 break;
                             case 'download_and_link':
-                                this.downloadConfig.androidLink = data.text[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.downloadConfig.androidLink = data.text[0];
+                                }else{
+                                    console.log('download_and_link未填写内容');
+                                }
                                 break;
                             case 'download_app_link':
-                                this.downloadConfig.appLink = data.text[0];
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.downloadConfig.appLink = data.text[0];
+                                }else{
+                                    console.log('download_app_link未填写内容');
+                                }
                                 break;
                             case 'index_focus':
-                                this.kvConfig.imgs = data.imgs;
-                                this.kvConfig.links = data.links;
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.kvConfig.imgs = data.imgs;
+                                    this.kvConfig.links = data.links;
+                                }else{
+                                    console.log('index_focus未填写内容');
+                                }
                                 break;
                             case 'funny_img':
-                                this.funnyConfig.imgs = data.imgs;
-                                this.funnyConfig.text = data.text;
-                                this.funnyConfig.thumb = data.thumbnails;
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.funnyConfig.imgs = data.imgs;
+                                    this.funnyConfig.text = data.text;
+                                    this.funnyConfig.thumb = data.thumbnails;
+                                }else{
+                                    console.log('funny_img未填写内容');
+                                }
                                 break;
                             case 'feature_img':
-                                this.fetureConfig.imgs = data.imgs;
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.fetureConfig.imgs = data.imgs;
+                                }else{
+                                    console.log('feature_img未填写内容');
+                                }
                                 break;
                             case 'footer_qr':
-                                this.qrcodeConfig.names = data.links;
-                                this.qrcodeConfig.imgs = data.imgs;
-                                this.qrcodeConfig.infos = data.text;
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.qrcodeConfig.names = data.links;
+                                    this.qrcodeConfig.imgs = data.imgs;
+                                    this.qrcodeConfig.infos = data.text;
+                                }else{
+                                    console.log('footer_qr未填写内容');
+                                }
                                 break;
                             case 'reserve_link':
                                 this.reserveLink = data.text;
@@ -175,6 +208,9 @@ export default {
                                 this.tip16Config.mob_index_img = data.data[0].mob_index_img;
                                 this.tip16Config.mob_index_left = data.data[0].mob_index_left;
                                 this.tip16Config.mob_index_top = data.data[0].mob_index_top;
+                                break;
+                            case 'top_video':
+                                this.topVideo = data.links[0];
                                 break;
                         }
                     }
@@ -221,7 +257,7 @@ export default {
         },
         showVideo(){
             this.$video({
-                videoSrc: '//video.37wanimg.com/setdl/yuyue/202105/setdl.mp4'
+                videoSrc: this.topVideo
             })
         }
     },
@@ -240,7 +276,7 @@ export default {
         this.getIndexNews(1,6);
         this.getIndexNews(2,6);
         this.getIndexNews(4,6);
-        this.getContent('top_img,pc_qrcode_download,download_and_link,download_app_link,index_focus,funny_img,feature_img,footer_qr,reserve_link,gamesite_fcm_content_tips,gamesite_fcm_tips');
+        this.getContent('top_img,pc_qrcode_download,download_and_link,download_app_link,index_focus,funny_img,feature_img,footer_qr,reserve_link,gamesite_fcm_content_tips,gamesite_fcm_tips,top_video');
     }
 }
 </script>
