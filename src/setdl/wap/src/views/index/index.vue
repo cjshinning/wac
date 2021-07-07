@@ -64,6 +64,7 @@ export default {
                 title: "赛尔特大陆",
                 desc: '恶搞无厘头，冒险闹翻天',
                 reserveLink: 'javascript:;',
+                reserveText: '',
                 iconSrc: '',
                 publicSrc: ''
             },
@@ -142,6 +143,7 @@ export default {
                             case 'wap_reserve_link':
                                 if(Object.prototype.toString.call(data) === '[object Object]'){
                                     this.navConfig.reserveLink = data.links[0];
+                                    this.navConfig.reserveText = data.text[0];
                                 }else{
                                     console.log('wap_reserve_link未填写内容');
                                 }

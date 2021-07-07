@@ -194,6 +194,17 @@
         @include sprite($btn-reserve-h);
     }
 }
+.gc-pic{
+    position: fixed;
+    left: 12px;
+    top: 50%;
+    margin-top: -177px;
+    width: 231px;
+    height: 354px;
+    z-index: 1000;
+    animation: rolling 1s linear infinite alternate;
+    // background: #000;
+}
 
 // 文章页
 .article,.list{

@@ -11,7 +11,7 @@
         </div>
         <div class="right">
             <a href="javascript:;" class="btn-subscribe" @click.prevent="showPublic">关注我们</a>
-            <a :href="config.reserveLink" class="btn-reserve">立即预约</a>
+            <a :href="config.reserveLink" class="btn-reserve">{{config.reserveText}}</a>
         </div>
     </header>
 </template>

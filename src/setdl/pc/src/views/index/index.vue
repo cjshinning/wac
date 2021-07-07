@@ -51,7 +51,10 @@
                 <qr-codes :qrcode="qrcodeConfig"></qr-codes>
             </div>
         </div>
-        <a :href="reserveLink" target="_blank" class="btn-reserve"></a>
+        <!-- <a :href="reserveLink" target="_blank" class="btn-reserve"></a> -->
+        <div class="gc-pic">
+            <img :src="gcPic" width="100%" alt="">
+        </div>
     </div>
 </template>
 <script>
@@ -122,7 +125,8 @@ export default {
                 mob_index_left: '',
                 mob_index_top: ''
             },
-            topVideo: ''
+            topVideo: '',
+            gcPic: ''
         }
     },
     methods: {
@@ -212,6 +216,13 @@ export default {
                             case 'top_video':
                                 this.topVideo = data.links[0];
                                 break;
+                            case 'gc_pic': 
+                                if(Object.prototype.toString.call(data) === '[object Object]'){
+                                    this.gcPic = data.imgs[0];
+                                }else{
+                                    console.log('gc_pic未填写内容');
+                                }
+                                break;
                         }
                     }
                 }
@@ -276,7 +287,7 @@ export default {
         this.getIndexNews(1,6);
         this.getIndexNews(2,6);
         this.getIndexNews(4,6);
-        this.getContent('top_img,pc_qrcode_download,download_and_link,download_app_link,index_focus,funny_img,feature_img,footer_qr,reserve_link,gamesite_fcm_content_tips,gamesite_fcm_tips,top_video');
+        this.getContent('top_img,pc_qrcode_download,download_and_link,download_app_link,index_focus,funny_img,feature_img,footer_qr,reserve_link,gamesite_fcm_content_tips,gamesite_fcm_tips,top_video,gc_pic');
     }
 }
 </script>
